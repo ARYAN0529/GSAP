@@ -1,17 +1,14 @@
-//nav not working due to use of ai in css
-
 var tl = gsap.timeline()
 
-tl.from ("h2" , {
-    y:-20,
-    opacity:0,
-    duration:1,
-    delay:0.5,
+tl.to("h2", {
+    y: 0,
+    opacity: 1,
+    duration: 0.8,
+    delay: 0.3,
 })
 
-tl.from ("h4" , {
-    y:-20,
-    opacity:0,
-    duration:2,
-    delay:0.5,
+tl.to("h4", {
+    opacity: 1,
+    duration: 0.5,
+    stagger: 0.15,
 })
