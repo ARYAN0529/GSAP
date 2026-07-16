@@ -4,327 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aryan Sharma — Developer</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #fff; color: #111; }
-        .display { font-family: 'Bricolage Grotesque', sans-serif; }
-
-        .nav-link { position: relative; transition: color 0.3s; }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0; bottom: -3px;
-            width: 0; height: 1.5px;
-            background: #111;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after { width: 100%; }
-
-        .accent { color: #7c3aed; }
-
-        .tag {
-            display: inline-block;
-            border: 1px solid #e5e7eb;
-            border-radius: 999px;
-            padding: 4px 14px;
-            font-size: 13px;
-            color: #555;
-            background: #fafafa;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
         }
 
-        .project-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
-
-        .btn-main {
-            background: #ffffff;
-            color: #000000;
-            border-radius: 6px;
-            padding: 12px 28px;
-            font-weight: 500;
-            font-size: 15px;
-            transition: background 0.3s;
-            display: inline-block;
-            cursor: pointer;
-        }
-        .btn-main:hover { background: #a0a1ae; }
-
-        .btn-outline {
-            border: 1.5px solid #000000;
-            border-radius: 6px;
-            padding: 11px 26px;
-            font-weight: 500;
-            font-size: 15px;
-            transition: all 0.3s;
-            display: inline-block;
-            cursor: pointer;
-        }
-        .btn-outline:hover { background: #111; color: #fff; }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #7c3aed;
-            margin-bottom: 12px;
+        body{
+            font-family: 'Inter', sans-serif;
+            overflow-x:hidden;
         }
 
-        .skill-box {
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 18px 22px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #333;
-            background: #fff;
-            transition: border-color 0.3s, color 0.3s;
-            cursor: default;
-        }
-        .skill-box:hover { border-color: #7c3aed; color: #7c3aed; }
-
-        .stat-num {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 42px;
-            font-weight: 800;
-            color: #111;
-            line-height: 1;
+        #bg-video{
+            position:fixed;
+            inset:0;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            z-index:-2;
         }
 
-        .gsap-h2, .gsap-nav { opacity: 0; }
-        .gsap-hero { opacity: 0; }
+        /* Optional dark overlay for readability */
+        .overlay{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.25);
+            z-index:-1;
+        }
     </style>
+
 </head>
+
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="flex justify-between items-center px-16 py-5 sticky top-0 z-50 bg-white border-b border-gray-100">
-        <h2 class="gsap-h2 display text-3xl font-bold tracking-tight">Aryan<span class="accent">.</span></h2>
-        <div class="flex gap-10 items-center">
-            <a class="gsap-nav nav-link text-md font-medium text-gray-700 cursor-pointer">Home</a>
-            <a class="gsap-nav nav-link text-md font-medium text-gray-700 cursor-pointer">About</a>
-            <a class="gsap-nav nav-link text-md font-medium text-gray-700 cursor-pointer">Work</a>
-            <a class="gsap-nav nav-link text-md font-medium text-gray-700 cursor-pointer">Resume</a>
-            <a class="btn-main gsap-nav text-md !py-2.5 !px-2.5">Contact Me</a>
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="/Portfolio/assets/original-d5c7eb3381e214ea62b74126b5ce529c.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <!-- Navbar -->
+    <nav
+        class="
+        fixed
+        top-[10px]
+        left-1/2
+        -translate-x-1/2
+
+        w-[calc(100%-20px)]
+        max-w-6xl
+
+        z-50
+
+        px-7
+        py-3
+
+        flex
+        justify-between
+        items-center
+
+        rounded-full
+
+        bg-white/10
+
+        backdrop-blur-[22px]
+        backdrop-saturate-200
+
+        border
+        border-white/20
+
+        ring-1
+        ring-white/10
+
+        shadow-[0_12px_40px_rgba(0,0,0,0.35)]
+    ">
+
+        <!-- Logo -->
+        <h2 class="text-white font-semibold text-xl tracking-wide">
+            Aryan
+        </h2>
+
+        <!-- Navigation -->
+        <div class="flex items-center gap-8">
+
+            <a href="#" class="text-white/90 hover:text-white transition">
+                Home
+            </a>
+
+            <a href="#" class="text-white/90 hover:text-white transition">
+                About
+            </a>
+
+            <a href="#" class="text-white/90 hover:text-white transition">
+                Work
+            </a>
+
+            <a href="#" class="text-white/90 hover:text-white transition">
+                Resume
+            </a>
+
+            <button
+                class="
+                px-5
+                py-2
+
+                rounded-full
+
+                bg-white
+
+                text-black
+
+                font-medium
+
+                hover:scale-105
+
+                transition
+                duration-300
+                ">
+                Contact Me
+            </button>
+
         </div>
+
     </nav>
 
-    <!-- HERO -->
-    <section class="flex items-center justify-between px-16 py-24 max-w-7xl mx-auto gap-12">
-        <div class="gsap-hero max-w-xl">
-            <p class="section-label mb-4">Full-Stack & Mobile Developer</p>
-            <h1 class="display text-6xl font-extrabold leading-tight tracking-tight mb-6">
-                Hello, I'm<br>
-                <span>Aryan Sharma</span>
-            </h1>
-            <p class="text-gray-500 text-lg leading-relaxed mb-8">
-                I'm a B.Tech CSE student at JECRC University building full-stack web apps and mobile experiences. I love turning ideas into fast, clean, and beautiful products.
-            </p>
-            <div class="flex gap-4">
-                <a class="btn-main">Say Hello 👋</a>
-                <a class="btn-outline">View Work</a>
-            </div>
+    <!-- Hero -->
+    <section class="h-screen flex items-center justify-center">
 
-            <!-- Stats -->
-            <div class="flex gap-10 mt-14 pt-10 border-t border-gray-100">
-                <div>
-                    <div class="stat-num">5+</div>
-                    <div class="text-sm text-gray-400 mt-1 font-medium">Projects Built</div>
-                </div>
-                <div>
-                    <div class="stat-num">2+</div>
-                    <div class="text-sm text-gray-400 mt-1 font-medium">Years Coding</div>
-                </div>
-                <div>
-                    <div class="stat-num">10+</div>
-                    <div class="text-sm text-gray-400 mt-1 font-medium">Technologies</div>
-                </div>
-            </div>
+        <div class="text-center">
+
+           
+
+          
+
         </div>
 
-        <!-- Profile image placeholder -->
-        <div class="gsap-hero flex-shrink-0">
-            <div class="w-80 h-96 rounded-2xl bg-gradient-to-br from-violet-100 to-violet-50 border border-violet-100 flex items-end justify-center overflow-hidden shadow-xl">
-                <div class="text-center pb-8">
-                    <div class="w-20 h-20 rounded-full bg-violet-200 mx-auto mb-3 flex items-center justify-center text-3xl">👨‍💻</div>
-                    <p class="text-violet-400 text-sm font-medium">Add your photo here</p>
-                </div>
-            </div>
-        </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="bg-gray-50 px-16 py-20">
-        <div class="max-w-7xl mx-auto flex gap-20 items-center">
-            <div class="flex-1">
-                <p class="section-label">About Me</p>
-                <h2 class="display text-4xl font-bold leading-snug mb-6">
-                    A developer who cares<br>about the <span class="accent">details</span>
-                </h2>
-                <p class="text-gray-500 leading-relaxed mb-4">
-                    I'm Aryan Sharma, a Computer Science undergraduate at JECRC University. I specialise in building full-stack web apps with React, Node.js, and MongoDB, and mobile apps with React Native & Expo.
-                </p>
-                <p class="text-gray-500 leading-relaxed mb-8">
-                    I'm currently working toward AI engineering — exploring LLM APIs, RAG, and building AI-powered products. My goal is to ship real things that people use.
-                </p>
-                <a class="btn-main">Download Resume</a>
-            </div>
-            <div class="flex-1 grid grid-cols-2 gap-4">
-                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
-                    <div class="text-2xl mb-3">🌐</div>
-                    <h4 class="font-semibold mb-1">Web Development</h4>
-                    <p class="text-sm text-gray-400">React, Node.js, Express, MongoDB, REST APIs</p>
-                </div>
-                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
-                    <div class="text-2xl mb-3">📱</div>
-                    <h4 class="font-semibold mb-1">Mobile Apps</h4>
-                    <p class="text-sm text-gray-400">React Native, Expo Router, NativeWind, Zustand</p>
-                </div>
-                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
-                    <div class="text-2xl mb-3">🤖</div>
-                    <h4 class="font-semibold mb-1">AI Engineering</h4>
-                    <p class="text-sm text-gray-400">LLM APIs, Prompt Engineering, RAG pipelines</p>
-                </div>
-                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
-                    <div class="text-2xl mb-3">🎨</div>
-                    <h4 class="font-semibold mb-1">UI/UX</h4>
-                    <p class="text-sm text-gray-400">Tailwind CSS, clean interfaces, dark themes</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="px-16 py-20 max-w-7xl mx-auto">
-        <p class="section-label text-center">Tech Stack</p>
-        <h2 class="display text-4xl font-bold text-center mb-12">Tools I work with</h2>
-        <div class="flex flex-wrap gap-3 justify-center">
-            <div class="skill-box">React</div>
-            <div class="skill-box">React Native</div>
-            <div class="skill-box">Expo</div>
-            <div class="skill-box">Node.js</div>
-            <div class="skill-box">Express.js</div>
-            <div class="skill-box">MongoDB</div>
-            <div class="skill-box">Tailwind CSS</div>
-            <div class="skill-box">NativeWind</div>
-            <div class="skill-box">JavaScript</div>
-            <div class="skill-box">TypeScript</div>
-            <div class="skill-box">Zustand</div>
-            <div class="skill-box">GSAP</div>
-            <div class="skill-box">Git & GitHub</div>
-            <div class="skill-box">REST APIs</div>
-            <div class="skill-box">JWT Auth</div>
-            <div class="skill-box">Java</div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="bg-gray-50 px-16 py-20">
-        <div class="max-w-7xl mx-auto">
-            <p class="section-label">Portfolio</p>
-            <div class="flex justify-between items-end mb-12">
-                <h2 class="display text-4xl font-bold">Featured Work</h2>
-                <a class="nav-link text-sm font-medium text-gray-500 cursor-pointer">View all projects →</a>
-            </div>
-            <div class="grid grid-cols-3 gap-6">
-
-                <!-- Card 1 -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
-                    <div class="h-44 bg-gradient-to-br from-violet-500 to-indigo-500 flex items-center justify-center text-5xl">💬</div>
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-3">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Expo</span>
-                        </div>
-                        <h3 class="display text-xl font-bold mb-2">ChatApp</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">A full-stack mobile chat application built with Expo Router, NativeWind v4, and Zustand for state management.</p>
-                        <div class="flex gap-3 mt-5">
-                            <a class="text-sm font-medium text-violet-600 cursor-pointer hover:underline">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
-                    <div class="h-44 bg-gradient-to-br from-sky-400 to-cyan-500 flex items-center justify-center text-5xl">📊</div>
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-3">
-                            <span class="tag">React</span>
-                            <span class="tag">MERN</span>
-                        </div>
-                        <h3 class="display text-xl font-bold mb-2">Sorting Visualizer</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">Interactive sorting algorithm visualizer with session history stored via Express & MongoDB. Animated with React state snapshots.</p>
-                        <div class="flex gap-3 mt-5">
-                            <a class="text-sm font-medium text-violet-600 cursor-pointer hover:underline">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="project-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
-                    <div class="h-44 bg-gradient-to-br from-pink-400 to-rose-400 flex items-center justify-center text-5xl">🔐</div>
-                    <div class="p-6">
-                        <div class="flex gap-2 mb-3">
-                            <span class="tag">Node.js</span>
-                            <span class="tag">JWT</span>
-                        </div>
-                        <h3 class="display text-xl font-bold mb-2">Notes App</h3>
-                        <p class="text-sm text-gray-500 leading-relaxed">REST API with JWT authentication, Express routing, and MongoDB for secure note storage and retrieval.</p>
-                        <div class="flex gap-3 mt-5">
-                            <a class="text-sm font-medium text-violet-600 cursor-pointer hover:underline">GitHub →</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="px-16 py-24 max-w-7xl mx-auto text-center">
-        <p class="section-label">Get In Touch</p>
-        <h2 class="display text-5xl font-extrabold mb-5">Let's work together<span class="accent">.</span></h2>
-        <p class="text-gray-400 text-lg mb-10 max-w-lg mx-auto">Open to internships, freelance projects, and collaboration. Drop me a message and I'll get back to you.</p>
-        <a class="btn-main text-base">Say Hello 👋</a>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-gray-100 px-16 py-8 flex justify-between items-center text-sm text-gray-400">
-        <span class="display font-bold text-black">Aryan<span class="accent">.</span></span>
-        <span>© 2025 Aryan Sharma. All rights reserved.</span>
-        <div class="flex gap-6">
-            <a class="hover:text-black cursor-pointer transition-colors">GitHub</a>
-            <a class="hover:text-black cursor-pointer transition-colors">LinkedIn</a>
-            <a class="hover:text-black cursor-pointer transition-colors">Twitter</a>
-        </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-        gsap.set(".gsap-hero", { y: 30, opacity: 0 })
-
-        var tl = gsap.timeline()
-
-        tl.to(".gsap-h2", {
-            opacity: 1,
-            duration: 0.8,
-            delay: 0.2,
-        })
-
-        tl.to(".gsap-nav", {
-            opacity: 1,
-            duration: 0.5,
-            stagger: 0.1,
-        }, "-=0.4")
-
-        tl.to(".gsap-hero", {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.2,
-        }, "-=0.2")
-    </script>
 </body>
 </html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meteor line background</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #000;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  /* each "track" is one full diagonal line's local coordinate space.
+     the static line + its meteor both live inside it, so animating
+     left:0% -> left:100% on the meteor moves it exactly along the
+     line's own tilt, with no manual trig needed. */
+  .track {
+    position: absolute;
+    width: 140%;
+    height: 1px;
+    transform-origin: left center;
+  }
+
+  .line-static {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(140,150,255,0) 0%, rgba(140,150,255,0.16) 15%, rgba(140,150,255,0.16) 85%, rgba(140,150,255,0) 100%);
+  }
+
+  /* soft meteor: blurred, wider gradient tail, lower peak opacity,
+     slower fade in/out so it never looks like a hard flash */
+  .meteor {
+    position: absolute;
+    top: -3px;
+    left: -9%;
+    width: 9%;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(255,90,90,0) 0%, rgba(255,90,90,0.35) 45%, rgba(90,150,255,0.85) 100%);
+    border-radius: 5px;
+    filter: blur(2px);
+    opacity: 0;
+    animation-name: travel;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes travel {
+    0%   { left: -6%; opacity: 0; }
+    10%  { opacity: 0.6; }
+    26%  { left: 100%; opacity: 0; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .content h1 {
+    color: #fff;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .content p {
+    color: #9aa0b8;
+    font-size: 16px;
+    max-width: 480px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero" id="hero">
+  <div class="content">
+    <h1>Your analytics need at one place</h1>
+    <p>Imagine maps with 100+ features and rock-solid security. That's SecretEye.</p>
+  </div>
+</div>
+
+<script>
+  const hero = document.getElementById('hero');
+
+  const ANGLE = 10;            // gentle downward tilt: top at left, slightly lower at right
+  const SPACING = 26;          // vertical gap between lines, px (denser)
+  const CYCLE = 10;            // seconds per travel+pause loop (slower meteor)
+  const METEOR_CHANCE = 0.3;   // fraction of lines that get a meteor
+
+  // horizontal wave applied per-row so the whole grid bends into
+  // an S shape down the page, instead of being a flat parallel stack
+  const WAVE_AMPLITUDE = 220;  // px, how far the S bulges left/right
+  const WAVE_CYCLES = 1;       // number of S bends over the full height
+
+  const rowCount = Math.ceil(window.innerHeight / SPACING) + 8;
+
+  for (let i = 0; i < rowCount; i++) {
+    const track = document.createElement('div');
+    track.className = 'track';
+
+    const y = i * SPACING - 250;
+    const wave = Math.sin((i / rowCount) * Math.PI * 2 * WAVE_CYCLES) * WAVE_AMPLITUDE;
+
+    track.style.top = y + 'px';
+    track.style.left = (-20 + (wave / window.innerWidth) * 100) + '%';
+    track.style.transform = `rotate(${ANGLE}deg)`;
+
+    const line = document.createElement('div');
+    line.className = 'line-static';
+    track.appendChild(line);
+
+    if (Math.random() < METEOR_CHANCE) {
+      const meteor = document.createElement('div');
+      meteor.className = 'meteor';
+      meteor.style.animationDuration = (CYCLE + Math.random() * 4) + 's';
+      meteor.style.animationDelay = (-Math.random() * 20) + 's';
+      track.appendChild(meteor);
+    }
+
+    hero.appendChild(track);
+  }
+</script>
+
+</body>
+</html>

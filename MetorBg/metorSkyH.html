@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meteor line background</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #030308;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  /* soft radial glow behind everything, for depth */
+  .glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(70,90,200,0.16), transparent 60%),
+      radial-gradient(ellipse 50% 35% at 20% 100%, rgba(120,60,180,0.10), transparent 60%),
+      radial-gradient(ellipse 50% 35% at 85% 90%, rgba(60,120,200,0.10), transparent 60%);
+    pointer-events: none;
+  }
+
+  #grid-wrap {
+    position: absolute;
+    inset: -60px;
+    transition: transform 0.6s ease-out;
+  }
+
+  #lines-svg {
+    position: absolute;
+    inset: 0;
+    width: calc(100% + 120px);
+    height: calc(100% + 120px);
+  }
+
+  /* tiny twinkling stars scattered through the field */
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: rgba(200,210,255,0.8);
+    animation: twinkle ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.1; transform: scale(1); }
+    50%      { opacity: 0.9; transform: scale(1.6); }
+  }
+
+  /* meteor rides the exact same curve as its matching svg line,
+     via offset-path, so it can only ever move along that line.
+     stays horizontal in local space -- offset-rotate:auto swings
+     the whole thing to follow the curve's actual direction. */
+  .meteor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 6px;
+    opacity: 0;
+    offset-rotate: auto;
+    animation-name: travel;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    background: linear-gradient(90deg, rgba(255,90,90,0) 0%, rgba(255,90,90,0.4) 42%, rgba(120,170,255,0.95) 100%);
+  }
+
+  /* bright bloom core at the meteor's leading head */
+  .meteor::after {
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(190,215,255,1) 0%, rgba(120,170,255,0.6) 45%, transparent 75%);
+  }
+
+  @keyframes travel {
+    0%   { offset-distance: 0%;   opacity: 0; }
+    10%  { opacity: 0.85; }
+    55%  { offset-distance: 100%; opacity: 0; }
+    100% { offset-distance: 100%; opacity: 0; }
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .content h1 {
+    color: #fff;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-shadow: 0 0 40px rgba(90,130,255,0.25);
+  }
+
+  .content p {
+    color: #9aa0b8;
+    font-size: 16px;
+    max-width: 480px;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero" id="hero">
+  <div class="glow"></div>
+  <div id="grid-wrap">
+    <svg id="lines-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+  <div class="content">
+    <h1>Your analytics need at one place</h1>
+    <p>Imagine maps with 100+ features and rock-solid security. That's SecretEye.</p>
+  </div>
+</div>
+
+<script>
+  const hero = document.getElementById('hero');
+  const svg = document.getElementById('lines-svg');
+  const gridWrap = document.getElementById('grid-wrap');
+
+  const W = window.innerWidth;
+  const H = window.innerHeight;
+
+  const SPACING = 26;          // horizontal gap between lines, px (dense grid)
+  const DROP = 90;             // net rightward drift top -> bottom, px
+  const BEND = 70;             // base strength of each line's S bend
+  const BEND_JITTER = 25;      // per-line randomness, so the field feels organic
+  const CYCLE = 10;            // seconds per travel+pause loop
+  const METEOR_CHANCE = 0.32;  // fraction of lines that get a meteor
+  const STAR_COUNT = 70;
+
+  svg.setAttribute('viewBox', `0 0 ${W + 120} ${H + 120}`);
+
+  const colCount = Math.ceil((W + 400) / SPACING);
+
+  // one gentle S-curve running top to bottom, with a touch of
+  // per-line jitter so the whole field doesn't look mechanically identical
+  function buildPath(offsetX) {
+    const bend = BEND + (Math.random() * 2 - 1) * BEND_JITTER;
+    const drop = DROP + (Math.random() * 2 - 1) * 20;
+    const y0 = -60, y3 = H + 60;
+    const x0 = offsetX;
+    const x3 = offsetX + drop;
+    const y1 = H * (0.28 + Math.random() * 0.08);
+    const y2 = H * (0.64 + Math.random() * 0.08);
+    const x1 = offsetX - bend;
+    const x2 = offsetX + drop + bend;
+    return `M ${x0},${y0} C ${x1},${y1} ${x2},${y2} ${x3},${y3}`;
+  }
+
+  for (let i = 0; i < colCount; i++) {
+    const offsetX = i * SPACING - 200;
+    const d = buildPath(offsetX);
+
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', d);
+    path.setAttribute('fill', 'none');
+    // subtle per-line opacity/hue drift for depth, instead of one flat color
+    const hue = 225 + Math.random() * 30;
+    const alpha = 0.08 + Math.random() * 0.14;
+    path.setAttribute('stroke', `hsla(${hue}, 90%, 75%, ${alpha})`);
+    path.setAttribute('stroke-width', '1');
+    svg.appendChild(path);
+
+    if (Math.random() < METEOR_CHANCE) {
+      const meteor = document.createElement('div');
+      meteor.className = 'meteor';
+      const len = 55 + Math.random() * 45;
+      meteor.style.width = len + 'px';
+      meteor.style.height = (3 + Math.random() * 2) + 'px';
+      meteor.style.offsetPath = `path('${d}')`;
+      meteor.style.animationDuration = (CYCLE + Math.random() * 5) + 's';
+      meteor.style.animationDelay = (-Math.random() * 22) + 's';
+      hero.appendChild(meteor);
+    }
+  }
+
+  // scattered twinkling stars for extra depth in the empty space
+  for (let i = 0; i < STAR_COUNT; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDuration = (2 + Math.random() * 4) + 's';
+    star.style.animationDelay = (-Math.random() * 6) + 's';
+    hero.appendChild(star);
+  }
+
+  // gentle parallax: the whole curve field drifts opposite the cursor
+  hero.addEventListener('mousemove', (e) => {
+    const nx = (e.clientX / W - 0.5) * 2;
+    const ny = (e.clientY / H - 0.5) * 2;
+    gridWrap.style.transform = `translate(${-nx * 14}px, ${-ny * 10}px)`;
+  });
+</script>
+
+</body>
+</html>
