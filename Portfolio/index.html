@@ -7,7 +7,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         *{
@@ -17,136 +17,228 @@
         }
 
         body{
-            font-family: 'Inter', sans-serif;
-            overflow-x:hidden;
+            font-family:'Inter',sans-serif;
+            background:#fff;
+            color:#111;
         }
 
-        #bg-video{
-            position:fixed;
-            inset:0;
+        .display{
+            font-family:'Bricolage Grotesque',sans-serif;
+        }
+
+        .accent{
+            color:#7c3aed;
+        }
+
+        .nav-link{
+            position:relative;
+            transition:color .3s;
+        }
+
+        .nav-link::after{
+            content:"";
+            position:absolute;
+            left:0;
+            bottom:-4px;
+            width:0;
+            height:2px;
+            background:#7c3aed;
+            transition:.3s;
+        }
+
+        .nav-link:hover::after{
             width:100%;
-            height:100%;
-            object-fit:cover;
-            z-index:-2;
         }
 
-        /* Optional dark overlay for readability */
-        .overlay{
-            position:fixed;
-            inset:0;
-            background:rgba(0,0,0,.25);
-            z-index:-1;
+        .btn-main{
+            background:#111;
+            color:#fff;
+            padding:12px 28px;
+            border-radius:8px;
+            transition:.3s;
+            font-weight:500;
+        }
+
+        .btn-main:hover{
+            background:#7c3aed;
+        }
+
+        .btn-outline{
+            border:1.5px solid #111;
+            padding:12px 28px;
+            border-radius:8px;
+            transition:.3s;
+            font-weight:500;
+        }
+
+        .btn-outline:hover{
+            background:#111;
+            color:#fff;
+        }
+
+        .section-label{
+            font-size:12px;
+            letter-spacing:.2em;
+            text-transform:uppercase;
+            color:#7c3aed;
+            font-weight:600;
+        }
+
+        .gsap-h2,
+        .gsap-nav,
+        .gsap-hero,
+        .gsap-image{
+            opacity:0;
         }
     </style>
-
 </head>
-
 <body>
 
-    <!-- Background Video -->
-    <video autoplay muted loop playsinline id="bg-video">
-        <source src="/Portfolio/assets/original-d5c7eb3381e214ea62b74126b5ce529c.mp4" type="video/mp4">
-    </video>
+<!-- ================= NAVBAR ================= -->
 
-    <div class="overlay"></div>
+<nav class="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-xl">
 
-    <!-- Navbar -->
-    <nav
-        class="
-        fixed
-        top-[10px]
-        left-1/2
-        -translate-x-1/2
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-8 lg:px-12 py-5">
 
-        w-[calc(100%-20px)]
-        max-w-6xl
-
-        z-50
-
-        px-7
-        py-3
-
-        flex
-        justify-between
-        items-center
-
-        rounded-full
-
-        bg-white/10
-
-        backdrop-blur-[22px]
-        backdrop-saturate-200
-
-        border
-        border-white/20
-
-        ring-1
-        ring-white/10
-
-        shadow-[0_12px_40px_rgba(0,0,0,0.35)]
-    ">
-
-        <!-- Logo -->
-        <h2 class="text-white font-semibold text-xl tracking-wide">
-            Aryan
+        <h2 class="display text-3xl font-bold tracking-tight gsap-h2">
+            Aryan<span class="accent">.</span>
         </h2>
 
-        <!-- Navigation -->
-        <div class="flex items-center gap-8">
+        <div class="flex items-center gap-10">
 
-            <a href="#" class="text-white/90 hover:text-white transition">
-                Home
-            </a>
+            <a class="nav-link text-gray-700 font-medium gsap-nav" href="#">Home</a>
 
-            <a href="#" class="text-white/90 hover:text-white transition">
-                About
-            </a>
+            <a class="nav-link text-gray-700 font-medium gsap-nav" href="#">About</a>
 
-            <a href="#" class="text-white/90 hover:text-white transition">
-                Work
-            </a>
+            <a class="nav-link text-gray-700 font-medium gsap-nav" href="#">Work</a>
 
-            <a href="#" class="text-white/90 hover:text-white transition">
-                Resume
-            </a>
+            <a class="nav-link text-gray-700 font-medium gsap-nav" href="#">Resume</a>
 
-            <button
-                class="
-                px-5
-                py-2
-
-                rounded-full
-
-                bg-white
-
-                text-black
-
-                font-medium
-
-                hover:scale-105
-
-                transition
-                duration-300
-                ">
+            <a href="#" class="btn-main gsap-nav">
                 Contact Me
-            </button>
+            </a>
 
         </div>
 
-    </nav>
+    </div>
 
-    <!-- Hero -->
-    <section class="h-screen flex items-center justify-center">
+</nav>
 
-        <div class="text-center">
+<!-- ================= HERO ================= -->
 
-           
+<section class="max-w-7xl mx-auto min-h-[88vh] flex items-center justify-between gap-20 px-8 lg:px-12">
 
-          
+    <!-- LEFT -->
+
+    <div class="max-w-xl gsap-hero">
+
+        <p class="section-label mb-5">
+            Full Stack & Mobile Developer
+        </p>
+
+        <h1 class="display text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight">
+
+            Hello, I'm <br>
+
+            <span class="accent">
+                Aryan Sharma
+            </span>
+
+        </h1>
+
+        <p class="mt-8 text-lg leading-8 text-gray-600">
+
+            I'm a B.Tech CSE student at JECRC University passionate about
+            building modern full-stack web applications and mobile apps.
+            I enjoy transforming ideas into fast, scalable and beautiful
+            digital experiences.
+
+        </p>
+
+        <div class="mt-10 flex gap-5">
+
+            <a href="#" class="btn-main">
+                View Projects
+            </a>
+
+            <a href="#" class="btn-outline">
+                Download Resume
+            </a>
 
         </div>
 
-    </section>
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="hidden lg:flex flex-1 justify-center gsap-image">
+
+        <div class="w-[420px] h-[500px] rounded-[40px] bg-gradient-to-br from-violet-100 via-white to-violet-50 border border-gray-200 shadow-2xl flex items-center justify-center">
+
+            <div class="text-center">
+
+                <h2 class="display text-4xl font-bold">
+                    animation images 
+                </h2>
+
+                <p class="mt-4 text-gray-500">
+                    svj
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= GSAP ================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+
+<script>
+
+gsap.timeline()
+
+.to(".gsap-h2",{
+    opacity:1,
+    y:0,
+    duration:.8
+})
+
+.to(".gsap-nav",{
+    opacity:1,
+    y:0,
+    stagger:.1,
+    duration:.5
+},"-=0.4")
+
+.fromTo(".gsap-hero",
+{
+    opacity:0,
+    x:-40
+},
+{
+    opacity:1,
+    x:0,
+    duration:.9
+},
+"-=0.3")
+
+.fromTo(".gsap-image",
+{
+    opacity:0,
+    x:40
+},
+{
+    opacity:1,
+    x:0,
+    duration:.9
+},
+"-=0.7");
+
+</script>
 
 </body>
 </html>
