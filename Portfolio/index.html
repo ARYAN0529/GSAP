@@ -18,7 +18,7 @@
 
         body{
             font-family:'Inter',sans-serif;
-            background:#fff;
+            background:#EDEDED;
             color:#111;
         }
 
@@ -27,7 +27,7 @@
         }
 
         .accent{
-            color:#7c3aed;
+            color:#FF5A1F;
         }
 
         .nav-link{
@@ -42,7 +42,7 @@
             bottom:-4px;
             width:0;
             height:2px;
-            background:#7c3aed;
+            background:#FF7A45;
             transition:.3s;
         }
 
@@ -60,7 +60,7 @@
         }
 
         .btn-main:hover{
-            background:#7c3aed;
+            background:#FF5A36;
         }
 
         .btn-outline{
@@ -72,7 +72,7 @@
         }
 
         .btn-outline:hover{
-            background:#111;
+            background:#0AC787;
             color:#fff;
         }
 
@@ -80,7 +80,7 @@
             font-size:12px;
             letter-spacing:.2em;
             text-transform:uppercase;
-            color:#7c3aed;
+            color:#6B7280;
             font-weight:600;
         }
 
@@ -96,9 +96,9 @@
 
 <!-- ================= NAVBAR ================= -->
 
-<nav class="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-xl">
+<nav class="sticky top-0 z-50 border-b border-gray-200 bg-#EDEDED backdrop-blur-xl">
 
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-8 lg:px-12 py-5">
+    <div class="max-w-full mx-auto flex items-center justify-between px-8 lg:px-12 py-5">
 
         <h2 class="display text-3xl font-bold tracking-tight gsap-h2">
             Aryan<span class="accent">.</span>
@@ -171,25 +171,24 @@
 
     <!-- RIGHT -->
 
-    <div class="hidden lg:flex flex-1 justify-center gsap-image">
+    <div class="hidden lg:flex flex-1 justify-center gsap-image bg-[#EDEDED]">
 
-        <div class="w-[420px] h-[500px] rounded-[40px] bg-gradient-to-br from-violet-100 via-white to-violet-50 border border-gray-200 shadow-2xl flex items-center justify-center">
+    <div class="w-[420px] h-[500px] rounded-[40px] bg-[#EDEDED] border border-gray-200 shadow-2xl flex items-center justify-center">
 
-            <div class="text-center">
-
-                <h2 class="display text-4xl font-bold">
-                    animation images 
-                </h2>
-
-                <p class="mt-4 text-gray-500">
-                    svj
-                </p>
-
-            </div>
-
-        </div>
+        <video
+            class="w-full h-full object-cover rounded-[40px]"
+            autoplay
+            muted
+            loop
+            playsinline
+        >
+            <source src="/Portfolio/assets/original-d5c7eb3381e214ea62b74126b5ce529c.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
 
     </div>
+
+</div>
 
 </section>
 
@@ -241,4 +240,4 @@ gsap.timeline()
 </script>
 
 </body>
-</html>
+</html> 
