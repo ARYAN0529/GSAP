@@ -1,243 +1,416 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aryan Sharma — Developer</title>
+    <title>Aryan Sharma — Full Stack & Mobile Developer</title>
 
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
-
-        body{
-            font-family:'Inter',sans-serif;
-            background:#EDEDED;
-            color:#111;
-        }
-
-        .display{
-            font-family:'Bricolage Grotesque',sans-serif;
-        }
-
-        .accent{
-            color:#FF5A1F;
-        }
-
-        .nav-link{
-            position:relative;
-            transition:color .3s;
-        }
-
-        .nav-link::after{
-            content:"";
-            position:absolute;
-            left:0;
-            bottom:-4px;
-            width:0;
-            height:2px;
-            background:#FF7A45;
-            transition:.3s;
-        }
-
-        .nav-link:hover::after{
-            width:100%;
-        }
-
-        .btn-main{
-            background:#111;
-            color:#fff;
-            padding:12px 28px;
-            border-radius:8px;
-            transition:.3s;
-            font-weight:500;
-        }
-
-        .btn-main:hover{
-            background:#FF5A36;
-        }
-
-        .btn-outline{
-            border:1.5px solid #111;
-            padding:12px 28px;
-            border-radius:8px;
-            transition:.3s;
-            font-weight:500;
-        }
-
-        .btn-outline:hover{
-            background:#0AC787;
-            color:#fff;
-        }
-
-        .section-label{
-            font-size:12px;
-            letter-spacing:.2em;
-            text-transform:uppercase;
-            color:#6B7280;
-            font-weight:600;
-        }
-
-        .gsap-h2,
-        .gsap-nav,
-        .gsap-hero,
-        .gsap-image{
-            opacity:0;
-        }
-    </style>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-[#0A0A0C] text-[#EDEDED] font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-[#FF5A1F] selection:text-white overflow-x-hidden relative">
+
+<!-- ================= BACKGROUND ================= -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-20" 
+     style="background-image: linear-gradient(to right, #27272a 1px, transparent 1px), linear-gradient(to bottom, #27272a 1px, transparent 1px); background-size: 40px 40px;">
+</div>
+<div class="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#0A0A0C_80%)]"></div>
 
 <!-- ================= NAVBAR ================= -->
-
-<nav class="sticky top-0 z-50 border-b border-gray-200 bg-#EDEDED backdrop-blur-xl">
-
-    <div class="max-w-full mx-auto flex items-center justify-between px-8 lg:px-12 py-5">
-
-        <h2 class="display text-3xl font-bold tracking-tight gsap-h2">
-            Aryan<span class="accent">.</span>
+<nav class="sticky top-0 z-50 border-b border-white/10 bg-[#0A0A0C]/80 backdrop-blur-xl transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-12 py-4">
+        <h2 class="font-['Bricolage_Grotesque',sans-serif] text-2xl lg:text-3xl font-extrabold tracking-tight gsap-h2">
+            Aryan<span class="text-[#FF5A1F]">.</span>
         </h2>
 
-        <div class="flex items-center gap-10">
-
-            <a class="nav-link text-gray-700 font-medium gsap-nav" href="#">Home</a>
-
-            <a class="nav-link text-gray-700 font-medium gsap-nav" href="#">About</a>
-
-            <a class="nav-link text-gray-700 font-medium gsap-nav" href="#">Work</a>
-
-            <a class="nav-link text-gray-700 font-medium gsap-nav" href="#">Resume</a>
-
-            <a href="#" class="btn-main gsap-nav">
-                Contact Me
+        <div class="hidden md:flex items-center gap-8">
+            <a class="relative text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#FF5A1F] hover:after:w-full after:transition-all after:duration-300 gsap-nav" href="#about">About</a>
+            <a class="relative text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#FF5A1F] hover:after:w-full after:transition-all after:duration-300 gsap-nav" href="#work">Work</a>
+            <a class="relative text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-[#FF5A1F] hover:after:w-full after:transition-all after:duration-300 gsap-nav" href="#skills">Skills</a>
+            <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 bg-white text-black font-semibold text-xs uppercase tracking-wider rounded-full hover:bg-[#FF5A1F] hover:text-white active:scale-95 transition-all duration-300 gsap-nav">
+                Let's Talk
             </a>
-
         </div>
-
     </div>
-
 </nav>
 
 <!-- ================= HERO ================= -->
-
-<section class="max-w-7xl mx-auto min-h-[88vh] flex items-center justify-between gap-20 px-8 lg:px-12">
+<section id="about" class="relative z-10 max-w-7xl mx-auto min-h-[90vh] flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 px-6 lg:px-12 py-16 lg:py-0">
 
     <!-- LEFT -->
-
-    <div class="max-w-xl gsap-hero">
-
-        <p class="section-label mb-5">
-            Full Stack & Mobile Developer
-        </p>
-
-        <h1 class="display text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight">
-
-            Hello, I'm <br>
-
-            <span class="accent">
-                Aryan Sharma
+    <div class="max-w-2xl gsap-hero">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF5A1F] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#FF5A1F]"></span>
             </span>
-
-        </h1>
-
-        <p class="mt-8 text-lg leading-8 text-gray-600">
-
-            I'm a B.Tech CSE student at JECRC University passionate about
-            building modern full-stack web applications and mobile apps.
-            I enjoy transforming ideas into fast, scalable and beautiful
-            digital experiences.
-
-        </p>
-
-        <div class="mt-10 flex gap-5">
-
-            <a href="#" class="btn-main">
-                View Projects
-            </a>
-
-            <a href="#" class="btn-outline">
-                Download Resume
-            </a>
-
+            <p class="text-xs font-mono tracking-wider text-gray-300 uppercase">
+                Full Stack &amp; Mobile Engineer
+            </p>
         </div>
 
+        <!-- MAGNETIC TITLE (Fixed IDs & Markup) -->
+        <div id="magnetic-wrapper" class="cursor-pointer inline-block perspective-1000">
+            <h1 id="magnetic-text" class="font-['Bricolage_Grotesque',sans-serif] text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-6">
+                Hello, I'm<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-[#FF5A1F]">Aryan Sharma</span>
+            </h1>
+        </div>
+
+        <p class="mt-4 text-base sm:text-lg leading-relaxed text-gray-400 max-w-xl font-normal">
+            B.Tech CSE student at JECRC University specializing in production-ready web apps, cross-platform mobile experiences, and scalable backend architecture.
+        </p>
+
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+            <a href="#work" class="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5A1F] text-white font-bold rounded-2xl hover:bg-[#FF7A45] active:scale-95 transition-all duration-300">
+                <span>View Featured Work</span>
+                <span>→</span>
+            </a>
+            <a href="#" class="inline-flex items-center justify-center px-8 py-4 border border-white/20 bg-white/5 text-white font-semibold rounded-2xl hover:bg-white/10 hover:border-white/40 active:scale-95 transition-all duration-300">
+                Download CV
+            </a>
+        </div>
     </div>
 
-    <!-- RIGHT -->
-
-    <div class="hidden lg:flex flex-1 justify-center gsap-image bg-[#EDEDED]">
-
-    <div class="w-[420px] h-[500px] rounded-[40px] bg-[#EDEDED] border border-gray-200 shadow-2xl flex items-center justify-center">
-
-        <video
-            class="w-full h-full object-cover rounded-[40px]"
-            autoplay
-            muted
-            loop
-            playsinline
-        >
-            <source src="/Portfolio/assets/original-d5c7eb3381e214ea62b74126b5ce529c.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-
+    <!-- RIGHT (FEATURED MEDIA CARD) -->
+    <div class="w-full lg:w-auto flex justify-center gsap-image">
+        <div class="relative group w-full max-w-[380px] sm:max-w-[420px] aspect-[4/5] rounded-[32px] p-2 bg-white/5 border border-white/10 backdrop-blur-2xl transition-all duration-500 hover:border-[#FF5A1F]/50">
+            <div class="w-full h-full rounded-[24px] overflow-hidden bg-black relative">
+                <video
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85 group-hover:opacity-100"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                >
+                    <source src="/Portfolio/assets/original-d5c7eb3381e214ea62b74126b5ce529c.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] via-transparent to-transparent opacity-80"></div>
+            </div>
+        </div>
     </div>
-
-</div>
 
 </section>
 
-<!-- ================= GSAP ================= -->
 
+    
+
+        <!-- ================= FEATURED PROJECTS ================= -->
+<section id="work" class="relative z-10 px-6 lg:px-12 py-28 border-t border-white/10 bg-[#0A0A0C]">
+    <div class="max-w-7xl mx-auto">
+
+        <!-- Section Header -->
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+            <div>
+                <p class="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#FF5A1F] mb-3">// FEATURED WORK</p>
+                <h2 class="font-['Bricolage_Grotesque',sans-serif] text-4xl sm:text-5xl font-extrabold tracking-tight">
+                    Engineering <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">Showcase</span>
+                </h2>
+            </div>
+            <a href="https://github.com/ARYAN0529" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 font-mono text-xs text-gray-300 hover:text-white hover:border-[#FF5A1F] transition-all duration-300 group">
+                <span>View All Repositories</span>
+                <span class="inline-block transition-transform duration-200 group-hover:translate-x-1 text-[#FF5A1F]">→</span>
+            </a>
+        </div>
+
+        <!-- Bento Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+            <!-- PROJECT 1: ChatApp Mobile (Featured Large Card - Span 7) -->
+            <div class="lg:col-span-7 group relative flex flex-col justify-between rounded-3xl bg-[#121216] border border-white/10 hover:border-[#FF5A1F]/50 transition-all duration-500 overflow-hidden p-8 sm:p-10">
+                <!-- Ambient Accent Glow -->
+                <div class="absolute -top-24 -right-24 w-72 h-72 bg-[#FF5A1F]/10 rounded-full blur-3xl group-hover:bg-[#FF5A1F]/20 transition-all duration-500 pointer-events-none"></div>
+
+                <div>
+                    <!-- Top Bar -->
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="font-mono text-xs font-bold tracking-widest text-[#FF5A1F] uppercase px-3 py-1 rounded-md bg-[#FF5A1F]/10 border border-[#FF5A1F]/20">
+                            Mobile App
+                        </span>
+                        <span class="font-mono text-xs text-gray-500">01 / 03</span>
+                    </div>
+
+                    <!-- Title & Description -->
+                    <h3 class="font-['Bricolage_Grotesque',sans-serif] text-3xl sm:text-4xl font-extrabold mb-4 group-hover:text-[#FF5A1F] transition-colors duration-300">
+                        ChatApp Mobile
+                    </h3>
+                    <p class="text-sm sm:text-base text-gray-400 leading-relaxed max-w-xl mb-8">
+                        Full-stack cross-platform client engineered with Expo Router and NativeWind v4. Features optimized real-time message state synchronization and offline caching via Zustand.
+                    </p>
+
+                    <!-- Tech Tags -->
+                    <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs">
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300">React Native</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300">Expo Router</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300">NativeWind v4</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300">Zustand</span>
+                    </div>
+                </div>
+
+                <!-- Code Block Preview (Replaces Logo) -->
+                <div class="rounded-xl bg-[#09090C] border border-white/10 p-4 font-mono text-xs text-gray-400 overflow-x-auto mb-8 relative">
+                    <div class="flex gap-1.5 mb-3 opacity-50">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                    </div>
+                    <code class="text-gray-300">
+                        <span class="text-[#FF5A1F]">const</span> useChatStore = create((set) => ({<br>
+                        &nbsp;&nbsp;messages: [],<br>
+                        &nbsp;&nbsp;<span class="text-blue-400">syncState</span>: (payload) => set((state) => ({ ...state })),<br>
+                        }));
+                    </code>
+                </div>
+
+                <!-- Action Links -->
+                <div class="flex items-center gap-6 pt-6 border-t border-white/10 font-mono text-xs">
+                    <a href="#" class="inline-flex items-center gap-2 text-[#FF5A1F] font-semibold hover:underline">
+                        <span>Source Code</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PROJECT 2: Votify (Featured Medium Card - Span 5) -->
+            <div class="lg:col-span-5 group relative flex flex-col justify-between rounded-3xl bg-[#121216] border border-white/10 hover:border-[#00F0FF]/50 transition-all duration-500 overflow-hidden p-8 sm:p-10">
+                <!-- Ambient Accent Glow -->
+                <div class="absolute -top-24 -right-24 w-72 h-72 bg-[#00F0FF]/10 rounded-full blur-3xl group-hover:bg-[#00F0FF]/20 transition-all duration-500 pointer-events-none"></div>
+
+                <div>
+                    <!-- Top Bar -->
+                    <div class="flex items-center justify-between mb-8">
+                        <span class="font-mono text-xs font-bold tracking-widest text-[#00F0FF] uppercase px-3 py-1 rounded-md bg-[#00F0FF]/10 border border-[#00F0FF]/20">
+                            Web Application
+                        </span>
+                        <span class="font-mono text-xs text-gray-500">02 / 03</span>
+                    </div>
+
+                    <!-- Title & Description -->
+                    <h3 class="font-['Bricolage_Grotesque',sans-serif] text-3xl font-extrabold mb-4 group-hover:text-[#00F0FF] transition-colors duration-300">
+                        Votify
+                    </h3>
+                    <p class="text-sm text-gray-400 leading-relaxed mb-8">
+                        Passwordless Passkey polling architecture with real-time stream aggregation delivered through Server-Sent Events (SSE).
+                    </p>
+
+                    <!-- Tech Tags -->
+                    <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs">
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300">Next.js</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300">WebAuthn</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300">SSE</span>
+                    </div>
+                </div>
+
+                <!-- Live Stream Visual Element -->
+                <div class="rounded-xl bg-[#09090C] border border-white/10 p-5 mb-8">
+                    <div class="flex items-center justify-between font-mono text-xs mb-2">
+                        <span class="text-gray-400">Stream Connection</span>
+                        <span class="text-[#00F0FF] flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse"></span>
+                            Live
+                        </span>
+                    </div>
+                    <div class="w-full bg-white/5 rounded-full h-2 overflow-hidden">
+                        <div class="bg-[#00F0FF] h-full w-[78%] transition-all duration-1000"></div>
+                    </div>
+                </div>
+
+                <!-- Action Links -->
+                <div class="flex items-center gap-6 pt-6 border-t border-white/10 font-mono text-xs">
+                    <a href="https://github.com/ARYAN0529/VoteFlow.git" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[#FF5A1F] hover:underline">
+                        GitHub →
+                    </a>
+                    <a href="https://vote-flow-two.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-[#00F0FF] hover:underline">
+                        Live Demo →
+                    </a>
+                </div>
+            </div>
+
+            <!-- PROJECT 3: Sorting Visualizer (Full Width Banner Card - Span 12) -->
+            <div class="lg:col-span-12 group relative flex flex-col md:flex-row items-stretch justify-between rounded-3xl bg-[#121216] border border-white/10 hover:border-[#FF5A1F]/50 transition-all duration-500 overflow-hidden p-8 sm:p-10 gap-8">
+                
+                <div class="flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="font-mono text-xs font-bold tracking-widest text-[#FF5A1F] uppercase px-3 py-1 rounded-md bg-[#FF5A1F]/10 border border-[#FF5A1F]/20">
+                                Interactive Tool
+                            </span>
+                            <span class="font-mono text-xs text-gray-500">03 / 03</span>
+                        </div>
+
+                        <h3 class="font-['Bricolage_Grotesque',sans-serif] text-3xl font-extrabold mb-4 group-hover:text-[#FF5A1F] transition-colors duration-300">
+                            Sorting Algorithm Visualizer
+                        </h3>
+                        <p class="text-sm text-gray-400 leading-relaxed max-w-2xl mb-6">
+                            Algorithm execution simulator with step controls, delay adjustments, and history logging backed by Express and MongoDB Atlas.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 font-mono text-xs mb-8">
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300">React</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300">Express.js</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300">MongoDB</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-white/10 font-mono text-xs">
+                        <a href="#" class="inline-flex items-center gap-2 text-[#FF5A1F] font-semibold hover:underline">
+                            <span>Source Code</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Abstract Visualizer Graphic (Replaces image/logo) -->
+                <div class="w-full md:w-80 bg-[#09090C] rounded-2xl border border-white/10 p-6 flex items-end justify-between gap-2 h-48 md:h-auto">
+                    <div class="w-full bg-[#FF5A1F]/30 rounded-t-md h-[30%] group-hover:h-[40%] transition-all duration-500"></div>
+                    <div class="w-full bg-[#FF5A1F]/50 rounded-t-md h-[70%] group-hover:h-[60%] transition-all duration-500"></div>
+                    <div class="w-full bg-[#FF5A1F] rounded-t-md h-[45%] group-hover:h-[80%] transition-all duration-500"></div>
+                    <div class="w-full bg-[#FF5A1F]/40 rounded-t-md h-[90%] group-hover:h-[35%] transition-all duration-500"></div>
+                    <div class="w-full bg-[#FF5A1F]/80 rounded-t-md h-[60%] group-hover:h-[95%] transition-all duration-500"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+    </div>
+</section>
+
+<!-- ================= SKILLS GRID ================= -->
+<section id="skills" class="relative z-10 px-6 lg:px-12 py-24 border-t border-white/10">
+    <div class="max-w-7xl mx-auto">
+        <p class="text-xs font-mono font-semibold tracking-[0.2em] uppercase text-[#FF5A1F] mb-3">// SKILLS &amp; ARCHITECTURE</p>
+        <h2 class="font-['Bricolage_Grotesque',sans-serif] text-4xl sm:text-5xl font-extrabold tracking-tight mb-16">
+            Technical <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Capabilities</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Box 1 -->
+            <div class="md:col-span-2 p-8 rounded-3xl bg-[#111115] border border-white/10 flex flex-col justify-between">
+                <div>
+                    <span class="text-2xl mb-4 block">⚡</span>
+                    <h3 class="text-xl font-bold mb-2">Frontend &amp; Mobile Development</h3>
+                    <p class="text-sm text-gray-400 mb-6">Crafting high-performance client interfaces with smooth animations, state snapshotting, and modular components.</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">React / Next.js</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">React Native (Expo)</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">Tailwind CSS / NativeWind</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">GSAP / Animations</span>
+                </div>
+            </div>
+
+            <!-- Box 2 -->
+            <div class="p-8 rounded-3xl bg-[#111115] border border-white/10 flex flex-col justify-between">
+                <div>
+                    <span class="text-2xl mb-4 block">🛠️</span>
+                    <h3 class="text-xl font-bold mb-2">Backend &amp; Real-time</h3>
+                    <p class="text-sm text-gray-400 mb-6">Building RESTful services and real-time event sockets.</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">Node.js / Express</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">Socket.IO / SSE</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">MongoDB / Atlas</span>
+                </div>
+            </div>
+
+            <!-- Box 3 -->
+            <div class="p-8 rounded-3xl bg-[#111115] border border-white/10 flex flex-col justify-between">
+                <div>
+                    <span class="text-2xl mb-4 block">💻</span>
+                    <h3 class="text-xl font-bold mb-2">Languages &amp; CS Fundamentals</h3>
+                    <p class="text-sm text-gray-400 mb-6">Core computer science principles and systems programming.</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">C++</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">Python</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">Java</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono">Git / Docker</span>
+                </div>
+            </div>
+
+            <!-- Box 4 -->
+            <div class="md:col-span-2 p-8 rounded-3xl bg-[#111115] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                <div>
+                    <span class="text-xs font-mono text-[#FF5A1F] uppercase tracking-wider">Education</span>
+                    <h3 class="text-2xl font-bold mt-1">B.Tech Computer Science Engineering</h3>
+                    <p class="text-sm text-gray-400 mt-1">JECRC University</p>
+                </div>
+                <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-gray-300 self-start sm:self-auto">
+                    Focused on Full-Stack &amp; Systems
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contact" class="relative z-10 px-6 lg:px-12 py-16 border-t border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+        <div>
+            <h3 class="font-['Bricolage_Grotesque',sans-serif] text-2xl font-bold">Aryan Sharma</h3>
+            <p class="text-sm text-gray-500 mt-1">Ready for full-stack engineering opportunities.</p>
+        </div>
+
+        <div class="flex items-center gap-6 text-sm font-mono text-gray-400">
+            <a href="https://github.com/ARYAN0529" target="_blank" rel="noopener noreferrer" class="hover:text-[#FF5A1F] transition-colors">GitHub</a>
+            <a href="#" class="hover:text-[#FF5A1F] transition-colors">LinkedIn</a>
+            <a href="#" class="hover:text-[#FF5A1F] transition-colors">Resume</a>
+        </div>
+    </div>
+</footer>
+
+<!-- ================= GSAP ANIMATIONS ================= -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
 
 <script>
-
+// Initial Entrance Timeline
 gsap.timeline()
+.to(".gsap-h2", { opacity: 1, y: 0, duration: 0.8 })
+.to(".gsap-nav", { opacity: 1, y: 0, stagger: 0.1, duration: 0.5 }, "-=0.4")
+.fromTo(".gsap-hero", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.9 }, "-=0.3")
+.fromTo(".gsap-image", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.9 }, "-=0.7");
 
-.to(".gsap-h2",{
-    opacity:1,
-    y:0,
-    duration:.8
-})
+// Magnetic Effect on Hero Name
+const wrapper = document.getElementById("magnetic-wrapper");
+const text = document.getElementById("magnetic-text");
 
-.to(".gsap-nav",{
-    opacity:1,
-    y:0,
-    stagger:.1,
-    duration:.5
-},"-=0.4")
+if (wrapper && text) {
+    wrapper.addEventListener("mousemove", (e) => {
+        const rect = wrapper.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left - rect.width / 2;
+        const mouseY = e.clientY - rect.top - rect.height / 2;
 
-.fromTo(".gsap-hero",
-{
-    opacity:0,
-    x:-40
-},
-{
-    opacity:1,
-    x:0,
-    duration:.9
-},
-"-=0.3")
+        gsap.to(text, {
+            x: mouseX * 0.3,
+            y: mouseY * 0.3,
+            rotateX: -mouseY * 0.05,
+            rotateY: mouseX * 0.05,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
 
-.fromTo(".gsap-image",
-{
-    opacity:0,
-    x:40
-},
-{
-    opacity:1,
-    x:0,
-    duration:.9
-},
-"-=0.7");
-
+    wrapper.addEventListener("mouseleave", () => {
+        gsap.to(text, {
+            x: 0,
+            y: 0,
+            rotateX: 0,
+            rotateY: 0,
+            duration: 0.8,
+            ease: "elastic.out(1, 0.3)"
+        });
+    });
+}
 </script>
 
 </body>
-</html> 
+</html>
