@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechOrbit — standalone test</title>
+  <link rel="stylesheet" href="techOrbit.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0A0A0C;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="tech-orbit"></div>
+
+  <script src="techOrbit.js"></script>
+  <script>
+    TechOrbit.mount("#tech-orbit", { size: 340 });
+  </script>
+
+</body>
+</html>

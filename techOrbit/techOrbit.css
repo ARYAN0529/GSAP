@@ -1,0 +1,61 @@
+.techorbit-wrap {
+  position: relative;
+  margin: 0 auto;
+  perspective: 900px;
+  touch-action: none;      /* important: lets us handle drag on touch devices ourselves */
+  cursor: grab;
+  user-select: none;
+}
+
+.techorbit-wrap:active {
+  cursor: grabbing;
+}
+
+.techorbit-scene {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+
+.techorbit-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 64px;
+  margin-left: -32px;
+  margin-top: -32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 12px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  will-change: transform, opacity;
+  pointer-events: none; /* clicks/drags are handled by the wrapper, not each badge */
+}
+
+.techorbit-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 480px) {
+  .techorbit-badge {
+    width: 52px;
+    height: 52px;
+    margin-left: -26px;
+    margin-top: -26px;
+    font-size: 12px;
+  }
+}
