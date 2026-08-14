@@ -11,6 +11,37 @@
   cursor: grabbing;
 }
 
+/* soft ambient glow sitting behind the whole sphere */
+/* .techorbit-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(99, 179, 237, 0.25) 0%, rgba(99, 179, 237, 0) 70%);
+  filter: blur(20px);
+  animation: techorbit-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+} */
+
+@keyframes techorbit-pulse {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.08); }
+}
+
+/* faint reflection ellipse beneath the sphere, grounds it visually */
+/* .techorbit-shadow {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  width: 55%;
+  height: 24px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 75%);
+  pointer-events: none;
+} */
+
 .techorbit-scene {
   position: absolute;
   top: 50%;
@@ -32,22 +63,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #eef0f3 100%);
   padding: 12px;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
   font-size: 15px;
   letter-spacing: -0.02em;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-  will-change: transform, opacity;
-  pointer-events: none; /* clicks/drags are handled by the wrapper, not each badge */
+  will-change: transform, opacity, filter;
+  transition: box-shadow 0.2s ease;
+  cursor: pointer;
+  /* pointer-events stay enabled here (unlike earlier versions) so each
+     badge can fire its own hover — mousedown still bubbles up to the
+     wrapper fine, so dragging from directly on a badge still works. */
 }
 
 .techorbit-badge img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* small floating name label that follows the cursor while hovering a badge */
+.techorbit-tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(20, 20, 24, 0.92);
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+  z-index: 10000;
 }
 
 @media (max-width: 480px) {
