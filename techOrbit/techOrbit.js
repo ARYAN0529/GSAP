@@ -175,9 +175,13 @@ const TechOrbit = (() => {
 
         const opacity = entered ? 0.35 + depth * 0.65 : 0;
         // subtle depth-of-field: badges toward the back blur slightly
-        const blur = (1 - depth) * 2.2;
 
-        el.style.transform =
+
+
+// const blur = Math.max(0, (1 - depth) - 0.35) * 2.5;
+const blur = (1 - depth) * 1.0; // was 2.2 — much subtler        
+
+el.style.transform =
           `translate3d(${p.x}px, ${p.y}px, ${p.z}px) rotateY(${-y}deg) rotateX(${-x}deg) scale(${scale})`;
         el.style.opacity = opacity;
         el.style.filter = isHovered ? "blur(0px)" : `blur(${blur}px)`;
